@@ -1,0 +1,11 @@
+# Run comprehensive AI tests
+pytest tests/test_ai_core.py
+
+# Test cognitive systems
+pytest tests/test_cognitive.py
+
+# Ethics framework testing
+pytest tests/test_ethics.py
+
+# Performance benchmarking
+python -m safeway_guardian.testing.ai_benchmark
