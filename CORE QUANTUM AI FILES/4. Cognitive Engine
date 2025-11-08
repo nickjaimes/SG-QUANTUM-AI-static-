@@ -1,0 +1,75 @@
+# src/safeway_guardian/quantum_ai/cognitive_engine.py
+"""
+🧠 COGNITIVE ENGINE
+Advanced cognitive processing and result integration
+"""
+
+class CognitiveEngine:
+    """Advanced cognitive processing system for integrating elemental results"""
+    
+    def __init__(self):
+        self.integration_algorithms = {
+            'weighted_fusion': self._weighted_integration,
+            'consensus_building': self._consensus_integration,
+            'conflict_resolution': self._conflict_integration
+        }
+        self.cognitive_models = {}
+    
+    def integrate_elemental_results(self, elemental_results: Dict[str, Any]) -> Dict[str, Any]:
+        """Integrate results from all elemental systems"""
+        elemental_data = elemental_results['elemental_results']
+        contributions = elemental_results['contributions']
+        
+        integration_result = {
+            'output': None,
+            'confidence': 0.0,
+            'reasoning_path': [],
+            'elemental_synergy': 0.0,
+            'integration_method': 'weighted_fusion'
+        }
+        
+        # Select integration method based on task characteristics
+        integration_method = self._select_integration_method(elemental_results)
+        
+        if integration_method in self.integration_algorithms:
+            integrated_output = self.integration_algorithms[integration_method](elemental_data, contributions)
+            integration_result.update(integrated_output)
+            integration_result['integration_method'] = integration_method
+        
+        # Calculate elemental synergy
+        integration_result['elemental_synergy'] = self._calculate_elemental_synergy(contributions)
+        
+        return integration_result
+    
+    def _weighted_integration(self, elemental_data: Dict, contributions: Dict) -> Dict[str, Any]:
+        """Weighted integration of elemental results"""
+        integrated_output = {}
+        total_confidence = 0.0
+        reasoning_path = []
+        
+        for element, contribution in contributions.items():
+            element_data = elemental_data.get(element, {})
+            element_weight = contribution
+            
+            # Aggregate outputs based on element type
+            if element == 'wood' and 'detected_patterns' in element_data:
+                integrated_output['patterns'] = element_data['detected_patterns']
+            
+            if element == 'fire' and 'conclusions' in element_data:
+                integrated_output['conclusions'] = element_data['conclusions']
+                reasoning_path.extend(element_data.get('reasoning_chain', []))
+            
+            if element == 'earth' and 'relevant_knowledge' in element_data:
+                integrated_output['supporting_knowledge'] = element_data['relevant_knowledge']
+            
+            # Accumulate confidence
+            element_confidence = element_data.get('pattern_confidence', 
+                                element_data.get('reasoning_confidence',
+                                element_data.get('relevance_score', 0.0)))
+            total_confidence += element_confidence * element_weight
+        
+        return {
+            'output': integrated_output,
+            'confidence': total_confidence,
+            'reasoning_path': reasoning_path
+        }
