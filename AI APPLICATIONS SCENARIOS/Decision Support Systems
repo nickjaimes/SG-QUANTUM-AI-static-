@@ -1,0 +1,4 @@
+from safeway_guardian.examples import decision_systems
+
+decision_ai = decision_systems.DecisionSupportAI()
+recommendations = decision_ai.analyze_business_case(case_data)
