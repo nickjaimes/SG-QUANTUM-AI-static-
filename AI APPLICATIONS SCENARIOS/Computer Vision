@@ -1,0 +1,4 @@
+from safeway_guardian.examples import computer_vision
+
+vision_system = computer_vision.VisualAI()
+image_analysis = vision_system.analyze_image(image_data)
