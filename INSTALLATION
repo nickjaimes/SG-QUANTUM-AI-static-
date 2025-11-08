@@ -1,0 +1,9 @@
+# Clone the quantum AI repository
+git clone https://github.com/nicolas-santiago/sg-quantum-ai-static.git
+cd sg-quantum-ai-static
+
+# Install AI dependencies
+pip install -r requirements.txt
+
+# Install in development mode
+pip install -e .
