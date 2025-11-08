@@ -1,0 +1,4 @@
+from safeway_guardian.examples import natural_language
+
+nlp_engine = natural_language.NLPProcessor()
+text_insights = nlp_engine.analyze_document(large_text_document)
